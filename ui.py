@@ -21,10 +21,15 @@ class Window:
         new_window.title(title)
         new_window.geometry(f"{width}x{height}")
         return new_window
+    def add_button(self, text, command=None,window = None,fg=None,bg=None):
+        target = window if window is not None else self.root
+        button = tk.Button(target, text=text, command=command, fg=fg, bg=bg)
+        button.pack(pady=20)
+        return button
 window = Window()
 window.set_geometry(width=400, height=300)
 window.resize( True,False, window.root)
-window.add_label("Hello World")
-new_window = window.open_new_window()
-tk.Label(new_window, text="Im new window!", font=("Arial", 14), fg="blue").pack(pady=10)
+window.add_label("Hello World" )
+new_window = window.open_new_window(title="Secondary window", width=400, height=300)
+window.add_button("Click me!", fg="red", bg="green")
 window.root.mainloop()
