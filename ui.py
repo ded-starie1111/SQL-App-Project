@@ -9,8 +9,9 @@ class Window:
     def resize(self, width = None, height = None, window = None):
         target = window if window is not None else self.root
         target.resizable(width, height)
-    def add_label(self,text):
-        label = tk.Label(self.root,text=text, font=("Arial", 16), fg="blue")
+    def add_label(self,text,window = None):
+        target = window if window is not None else self.root
+        label = tk.Label(target,text=text, font=("Arial", 16), fg="blue")
         label.pack(pady=20)
         if not hasattr(self, "labels"):
             self.labels = []
